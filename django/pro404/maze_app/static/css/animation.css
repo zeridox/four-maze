@@ -1,0 +1,204 @@
+.st2{
+	stroke:blue;
+	fill:none;
+	stroke-dasharray: 12000; 
+	animation-name: animate2;
+	animation-duration: 20s;
+	animation-iteration-count: infinite;
+	animation-timing-function:ease-in-out;
+}
+@keyframes animate2{
+	0%{
+		fill: none;
+		stroke-dashoffset: 0;
+	}
+	50%{
+
+		fill: none;
+		stroke-dashoffset: 12000;
+		stroke-dasharray: 12000;
+	}
+
+	100%{
+		stroke-dashoffset:0;
+    }
+}
+.move-1{
+	width:100px;
+	margin:20px;
+	height:auto;
+	animation-name: move1;
+	animation-duration: 30s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	transition: ease-in-out .5s;
+	display:inline-block;
+}
+@keyframes move1{
+	0%{
+        opacity: 0;
+        blur:2px;
+		transform:translateY(-100px);
+		
+	}
+	
+	50%{
+        blur:0px;
+		opacity: 100;
+		
+	}
+	100%{
+        opacity: 0;
+        blur:2px;
+		transform:translateY(600px);
+		
+		
+	}
+}
+.move-1:hover{
+	width:150px;
+	height:auto;
+	transition: ease-in-out .5s;
+}
+
+.move-2{
+	width:100px;
+	margin:20px;
+	height:auto;
+	animation-name: move2;
+	animation-duration: 20s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	transition: ease-in-out .5s;
+	display:inline-block;
+}
+.move-2:hover{
+	width:150px;
+	height:auto;
+	transition: ease-in-out .5s;
+}
+@keyframes move2{
+	0%{
+		opacity: 0;
+		transform:translateY(-100px);
+		
+	}
+	
+	50%{
+		opacity: 100;
+		
+	}
+	100%{
+		opacity: 0;
+		transform:translateY(600px);
+		
+		
+	}
+}
+.move-3{
+	width:100px;
+	margin:20px;
+	height:auto;
+	animation-name: move3;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	transition: ease-in-out .5s;
+	display:inline-block;
+}
+.move-3:hover{
+	width:150px;
+	height:auto;
+	transition: ease-in-out .5s;
+}
+@keyframes move3{
+	0%{
+        opacity: 0;
+		transform:translateY(-100px);
+		
+	}
+	
+	50%{
+		opacity: 100;
+		
+	}
+	100%{
+		opacity: 0;
+		transform:translateY(500px);
+		
+		
+	}
+}
+h4{
+    animation-name: space;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	transition: ease-in-out .5s;
+}
+@keyframes space{
+	0%{
+		letter-spacing: 2em;
+		
+	}
+	
+	50%{
+        letter-spacing: 1em;		
+	}
+	100%{
+        letter-spacing: 2em;    
+    }
+}
+.mazee{
+    position: fixed;
+    z-index:-3;
+    left:0%;
+    top:50%;
+    transform: translateY(-50%);
+    width:100vw;
+    height:fit-content;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation-name: blurry;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	transition: ease-in-out .5s;
+}
+@keyframes blurry{
+	0%{
+		filter:blur(2px);
+		
+	}
+	
+	50%{
+        filter:blur(0px);		
+	}
+	100%{
+        filter:blur(2px);    }
+}
+body{
+    animation-name: night;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	transition: ease-in-out .5s;
+}
+@keyframes night{
+	0%{
+		background-color:black;
+		
+	}
+	
+	50%{
+		background-color:rgb(24, 24, 24);
+		
+	}
+	100%{
+		background-color:black;
+    }
+}
+		
+	

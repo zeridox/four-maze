@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <title>404 Maze Found</title>
+    <style>
+        @font-face {
+	font-family: 'C404BoldOnly-Regular-2';
+	src: url('{% static "fonts/C404BoldOnly-Regular-2.otf" %}');  
+}
+input.key {
+  font-family: 'C404BoldOnly-Regular-2';
+  width: 100px; 
+  height: 16px;  
+}
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div id="maze-world"></div>
+            <div id="pacman"></div>
+        </div>
+    </div>
+    <div id="score">
+        {% if messages %}
+        {% for message in messages %}
+            <div class="mess_g">{{ message }}</div>
+        {% endfor %}    
+    {% endif %}
+    {% include 'snippets/loop.html' %}
+</div>
+    <div class="first">
+        <label for="gen-name">Name</label>
+        <input type="text" id="gen-name" name="gen-name" placeholder="Name">
+        <label for="gen-month">Month</label>
+        <select id ="gen-month">
+            <option value="January">January</option>
+            <option value="Februrary">Februrary</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+        </select>
+        <label for="dating">Day</label>
+        <select id="dating"></select>
+        <label for="yearing">Year</label>
+        <select id="yearing"></select>
+        <button id="first-level">Proceed</button>
+    </div>
+    <div class="second">
+        <label for="gen-caster">Digital Address</label>
+        <input type="text" id="gen-caster" placeholder="nick name">
+        <label for="gen-spell">Spell</label>
+        <input type="text" class="key" id="gen-spell" placeholder="A" autocomplete="off">
+        <label for="gen-color">Choose your color</label>
+        <input type="color" id="gen-color">
+        <button id="second-level">Proceed</button>
+    </div>
+    <div class="third">
+        <p>What is your #1 aspiration?</p>
+        <textarea id="gen-asp" placeholder="Let the maze know your dreams!" cols='100' rows='5'></textarea>
+        <p>In one word, what would you like to change about your life?</p>
+        <input type="text" maxlength="15" id="gen-change" placeholder="One word!">
+        <button id="third-level">Proceed</button>
+    </div>
+
+    <div class="flash">
+        <form class="hidden" action="/create_name" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="user_name" id="con-caster">
+            <input type="hidden" name="password" id="con-spell">
+            <input type="hidden" name="first_name" id="con-name">
+            <input type="hidden" name="month" id="con-month">
+            <input type="hidden" name="date" id="con-date">
+            <input type="hidden" name="year" id="con-year">
+            <input type="hidden" name="color" id="con-color">
+            <input type="hidden" name="asp" id="con-asp">
+            <input type="hidden" name="change" id="con-change">
+            <button id="enter" type="submit">Enter the Night</button>
+            
+        </form>
+    </div>
+
+</body>
+
+<script src="{% static 'js/maze.js' %}"></script>
+
+</html>

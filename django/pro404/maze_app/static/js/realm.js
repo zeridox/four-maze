@@ -134,24 +134,27 @@ var d = [
     if(s[d3][d6] ==1){
         s[d3][d6] = 3;
     };
-
+    
 // After the portals are established the mazes are united as one.
     var top = conCatX(n,s);
     z = top.length*2 -2;
+    k = top.length-1;
     top[1][z] = 2;
     top[1][0] = 0;
+    top[1][k] = 4;
     var bottom = conCatX(e,w);
     q = bottom.length*2-2;
-    w = bottom.length-2;
+    w = bottom.length-1;
   
     bottom[1][0] = 9;
-    bottom[0][q-1] = 1;
+    bottom[0][q-1] = 5;
     bottom[1][q] = 2;
+    bottom[1][w] = 6;
     var quad = conCatY(top,bottom);
     return quad;
     };
 
-    var maze = buildQuad(c,d,b,a);
+    var maze = buildQuad(a,b,c,d);
     //this is the maze it will be an array
 
     function displayMaze(){
@@ -180,6 +183,15 @@ var d = [
                 
                 if(maze[i][j]==3){
                     output+= "<div class='question'></div>"
+                };
+                if(maze[i][j]==4){
+                    output+= "<div class='level'></div>"
+                };
+                if(maze[i][j]==5){
+                    output+= "<div class='level'></div>"
+                };
+                if(maze[i][j]==6){
+                    output+= "<div class='level'></div>"
                 };
                 
                 if(maze[i][j]==9){
@@ -245,32 +257,93 @@ displayPacman();
         displayScore();
     };
    
-    if(maze[pacman.y][pacman.x]==3){
-        maze[pacman.y+1][pacman.x]=2;
-        maze[pacman.y-1][pacman.x]=2;
-        maze[pacman.y][pacman.x+1]=2;
-        maze[pacman.y][pacman.x-1]=2;
-        score+=100;
-        $('.flash').css('display','flex');
-        $('.question').css('background-color','rgb(255, 95, 77)');
-        $('.empty').addClass('brandon');
-        $('.brick').css('opacity','0%');
-        $('.coin').css('opacity','0%');
-    }else{
-        $('.flash').css('display','none');
-        $('.question').css('background-color','rgb(140, 140, 140)');
-        // $('body').removeClass('brandon');
-        $('.brick').css('opacity','100%');
-        $('.coin').css('opacity','100%');
-    };
+    // if(maze[pacman.y][pacman.x]==3){
+    //     maze[pacman.y+1][pacman.x]=2;
+    //     maze[pacman.y-1][pacman.x]=2;
+    //     maze[pacman.y][pacman.x+1]=2;
+    //     maze[pacman.y][pacman.x-1]=2;
+    //     score+=100;
+    //     $('.flash').css('display','flex');
+    //     $('.question').css('background-color','rgb(255, 95, 77)');
+    //     $('.empty').addClass('brandon');
+    //     $('.brick').css('opacity','0%');
+    //     $('.coin').css('opacity','0%');
+    // }else{
+    //     $('.flash').css('display','none');
+    //     $('.question').css('background-color','rgb(140, 140, 140)');
+    //     // $('body').removeClass('brandon');
+    //     $('.brick').css('opacity','100%');
+    //     $('.coin').css('opacity','100%');
+    // };
     if(maze[pacman.y][pacman.x]==2){
         
         displayPacman();
     }
-    //  displayPacman();
+    if(maze[pacman.y][pacman.x]==4){
+        maze[pacman.y][pacman.x+1]=2;
+        maze[pacman.y][pacman.x-1]=2;
+    $('.first').css('display','flex');
+    console.log('firstlevel');
+    displayPacman();
+ };
+ if(maze[pacman.y][pacman.x]==5){
+    maze[pacman.y+1][pacman.x]=2;
+    maze[pacman.y-1][pacman.x]=2;
+    $('.second').css('display','flex');
+    displayPacman();
+ };
+ if(maze[pacman.y][pacman.x]==6){
+    maze[pacman.y][pacman.x+1]=2;
+    maze[pacman.y][pacman.x-1]=2;
+    $('.third').css('display','flex');
+    $('.question').addClass('portal');
+    displayPacman();
+ }else{
+    $('.question').removeClass('portal');
  };
 
+ if(maze[pacman.y][pacman.x]==9){
+    maze[pacman.y][pacman.x+1]=2;
+    maze[pacman.y][pacman.x-1]=2;
+    $('.flash').css('display','flex');
+    $('.empty').addClass('brandon');
+    $('.brick').css('opacity','0%');
+    $('.coin').css('opacity','0%');
 
+
+
+    displayPacman();
+ }; //  displayPacman();
+ }
+
+
+
+//questions questions questions
+$('#first-level').click(function(){
+    maze[pacman.y][pacman.x]=2;
+    maze[pacman.y][pacman.x+1]=0;
+
+    $('.first').css('display','none');
+    displayPacman();
+
+});
+
+$('#second-level').click(function(){
+    maze[pacman.y][pacman.x]=2;
+    maze[pacman.y+1][pacman.x]=0;
+
+    $('.second').css('display','none');
+    displayPacman();
+
+});
+
+$('#third-level').click(function(){
+    maze[pacman.y][pacman.x]=2;
+    maze[pacman.y][pacman.x-1]=0;
+
+    $('.third').css('display','none');
+    displayPacman();
+});
  $('#top').click(function(){
     if(maze[pacman.y-1][pacman.x]!== 2){
         pacman.y -- ;
@@ -305,8 +378,6 @@ displayPacman();
         $('.coin').css('opacity','100%');
     };
  });
-
-
  $('#right').click(function(){
     if(maze[pacman.y][pacman.x+1]!== 2){
         pacman.x ++ ;
@@ -339,7 +410,6 @@ displayPacman();
         $('.coin').css('opacity','100%');
     };
  });
- 
 $('#bottom').click(function(){
     if(maze[pacman.y+1][pacman.x]!== 2){
         pacman.y ++ ;
@@ -391,7 +461,7 @@ $('#left').click(function(){
         maze[pacman.y-1][pacman.x]=2;
         maze[pacman.y][pacman.x+1]=2;
         maze[pacman.y][pacman.x-1]=2;
-        score+=100;
+        // score+=100;
         $('.flash').css('display','block');
         $('.question').css('background-color','rgb(255, 95, 77)');
         $('.empty').addClass('brandon');
@@ -424,5 +494,7 @@ $('#left').click(function(){
         $('.coin').css('opacity','100%');
         console.log('working');
         displayPacman();
+        
  });
+
 });

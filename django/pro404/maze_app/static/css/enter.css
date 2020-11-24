@@ -4,11 +4,32 @@
     outline:none;
     white-space: nowrap;
 }
+a{
+    text-decoration: none;
+    color:blue;
+    
+}
+a:visited{
+    text-decoration: none;
+    color:rgb(0, 0, 0);
+    
+}
+h4{
+    font-size:4em;
+    font-weight: 100;
+}
+.all{
+    position:fixed;
+    z-index:-1;
+    width:100vw;
+    height:100vh;
+    top:0%;
+    left:0%;
+}
 #score{
     width:100%;
     height:10%;
     position: fixed;
-    border:1px solid white;
     top:0%;
     display: flex;
     align-items: center;
@@ -23,13 +44,58 @@
     width:100vw;
     height:100vh;
     position:fixed;
-    display: flex;
+    display: none;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 2;
     top:0%;
     left:0%;
-    background-color: indianred;
+    background-color: black;
+    color:white;
+    
+}
+.first{
+    width:100vw;
+    height:100vh;
+    position:fixed;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    top:0%;
+    left:0%;
+    background-color: white;
+    
+}
+.second{
+    width:100vw;
+    height:100vh;
+    position:fixed;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    top:0%;
+    left:0%;
+    background-color: white;
+    
+}
+.third{
+    width:100vw;
+    height:100vh;
+    position:fixed;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    top:0%;
+    left:0%;
+    background-color: rgba(0, 0, 0, 0.447);
+    color:white;
     
 }
 
@@ -52,6 +118,11 @@
     height:495px;
     
 }
+.containers{
+    width: 100vw;
+    height:100vh;
+    
+}
 #maze-world{
     width:fit-content;
     height:auto;
@@ -59,10 +130,6 @@
     position: absolute;
 }
 
-body{
-    background-color:black;
-    color:white;
-}
 
 div.row{
     width:auto;
@@ -92,6 +159,9 @@ div.gold{
 
 div.question{
     background-color: rgb(59, 59, 59);
+}
+div.level{
+    background-color: rgb(255, 217, 0);
 }
 .controller{
     display:none;
@@ -165,17 +235,9 @@ div.question{
     left:0%;
     
 }
-#pacman{
-    background-color: springgreen;
-    position: relative;
+
 }
-}
-#pacman{
-    background-color: springgreen;
-    width:15px;
-    height:15px;
-    position: relative;
-}
+
 
 .brandon{
     background-color:rgb(0, 67, 0);
@@ -195,3 +257,19 @@ div.question{
     background-color:rgb(0, 143, 71);
 }
 }
+.portal{
+    background-color:salmon;
+    animation-name: portall;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+@keyframes portall{
+    0%{
+        background-color:rgb(255, 187, 179);
+    }
+    50%{
+        background-color:red;
+    }
+    100%{
+        background-color:rgb(255, 187, 179);
+    }

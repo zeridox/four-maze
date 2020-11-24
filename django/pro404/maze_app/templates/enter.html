@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/enter.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <title>404 Maze Found</title>
+    <style>
+        @font-face {
+	font-family: 'C404BoldOnly-Regular-2';
+	src: url('{% static "fonts/C404BoldOnly-Regular-2.otf" %}');  
+}
+.key {
+  font-family: 'C404BoldOnly-Regular-2';
+  width: 100px; 
+  height: 16px;  
+}
+span{
+    color:{{user.color}};
+}
+span.port{
+    color:salmon;
+}
+body{
+    background-color:grey;
+    color:black;
+}
+#pacman{
+    width:15px;
+    height:15px;
+    background-color: {{user.color}};
+    position:relative;
+}
+div.brick{
+    background-color:{{user.color}};
+}
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div id="maze-world"></div>
+            <div id="pacman"></div>
+        </div>
+    </div>
+    <div id="score">
+        {% if messages %}
+        {% for message in messages %}
+            <div class="mess_g">{{ message }}</div>
+        {% endfor %}    
+    {% endif %}
+</div>
+    <div class="first">
+        <h1>Hello,{{user.first_name}}</h1>
+        <p><span>#{{user.zodiac}}!</span></p>
+        <button id="first-level">Proceed</button>
+
+    </div>
+    <div class="second">
+        <h1>Your name in this dimension is <span>{{user.user_name}}</span>. Get used to it!</h1>
+        <p>Don't forget your spell: <span>{{user.password}}</span>. You are going to need it to teleport to other realms</p>
+        <button id="second-level">Proceed</button>
+    </div>
+    <div class="third">
+        <h1>As you progress through each realm, feel free to explore <span class="port">portals</span>!</h1>
+        <p>In the first realm we are going to explore how we can change your <span>{{user.change}}</span>!</p>
+        <button id="third-level">Proceed</button>
+    </div>
+
+    <div class="flash">
+        <a href="/realm"><h3>Teleport</h3><br><h4 class="key">T</h4></a>
+    </div>
+</body>
+
+<script src="{% static 'js/realm.js' %}"></script>
+
+</html>
